@@ -9,45 +9,36 @@
 
 ## 📝 Aperçu du Projet
 
-Ce projet est la suite du TP1 et s'inscrit dans le cadre du module d'Applications Réparties. L'objectif est de faire évoluer notre application client-serveur pour gérer des communications plus complexes que l'échange d'un simple octet.
-
-Le projet se concentre sur deux mécanismes de communication essentiels en Java :
-1. L'échange de **chaînes de caractères** (CC) pour envoyer des commandes complètes.
-2. L'échange d'**objets sérialisables** pour une communication structurée et orientée objet.
+Ce projet universitaire, qui fait suite au TP1, s'inscrit dans le cadre du module d'Applications Réparties. L'objectif principal est de faire évoluer l'application client-serveur pour gérer des communications plus complexes que l'échange d'un simple octet, en explorant deux mécanismes fondamentaux de la communication réseau en Java.
 
 ## 📂 Structure du Projet
 
-Le projet est organisé autour d'une nouvelle architecture de packages et de deux branches Git, chacune correspondant à une activité du TP2.
-
-### Nouvelle structure de packages :
-- **`clientPackage`**: Contient la classe `Client`.
-- **`serverPackage`**: Contient la classe `Server`.
-- **`model`**: Contient la classe `Operation` (utilisée dans l'Activité 2.2).
+Le développement est organisé en deux branches distinctes, chacune correspondant à une activité spécifique du travail pratique. Chaque branche représente une étape d'évolution de l'application, introduisant une nouvelle méthode de communication.
 
 ---
 
 ### 1️⃣ Activité 2.1: Échange de Chaînes de Caractères via Sockets TCP 💬
 *(Branche: `Med-Gh-TN-Activite_2_1`)*
 
-> L'application est modifiée pour que le client envoie une opération mathématique complète (ex: "55 * 25") sous forme de chaîne. Le serveur reçoit cette chaîne, la traite, effectue le calcul et renvoie le résultat. Cette étape utilise les classes `BufferedReader` et `PrintWriter` pour gérer les flux de texte.
+> L'objectif est de permettre au client d'envoyer une opération mathématique complète (ex: "55 * 25") sous forme de chaîne de caractères. L'application est modifiée pour utiliser les flux de traitement de texte (`BufferedReader`/`PrintWriter`). Le serveur reçoit la chaîne, l'analyse, effectue le calcul et renvoie le résultat au client.
 
 ### 2️⃣ Activité 2.2: Échange d'Objets Sérialisables 📦
 *(Branche: `Med-Gh-TN-Activite_2_2`)*
 
-> Pour une communication plus propre, cette activité remplace l'échange de chaînes par l'échange d'objets `Operation` qui implémentent l'interface `Serializable`. Le client envoie un objet contenant l'opération, et le serveur renvoie ce même objet mis à jour avec le résultat. La communication se fait via `ObjectOutputStream` et `ObjectInputStream`.
+> Pour une communication plus robuste et orientée objet, cette activité remplace l'échange de chaînes par l'échange d'objets. Une classe `Operation` implémentant l'interface `Serializable` est créée pour encapsuler les données. Le client envoie une instance de cet objet, le serveur la reçoit, la modifie en y ajoutant le résultat du calcul, et la renvoie au client.
 
 ---
 
 ## 🚀 Comment Compiler et Exécuter
 
-Assurez-vous d'avoir le **JDK (Java Development Kit)** installé. Le projet utilisant des packages, les commandes de compilation et d'exécution sont spécifiques.
+Pour lancer l'application, assurez-vous d'avoir le **JDK (Java Development Kit)** installé sur votre machine. Ce projet utilise des packages, les commandes sont donc spécifiques.
 
-### Compilation
-Ouvrez un terminal à la racine de votre projet et exécutez la commande suivante pour compiler tous les fichiers source et placer les fichiers `.class` dans un dossier `bin`.
+### Compilation du projet
+Ouvrez un terminal à la racine du projet et exécutez la commande suivante pour compiler tous les fichiers.
 
 ```bash
-# Crée le dossier 'bin' s'il n'existe pas
+# Crée un dossier 'bin' pour stocker les fichiers .class
 mkdir -p bin
 
-# Compile tous les fichiers .java et place les .class dans le dossier bin
+# Compile tous les fichiers .java et place le résultat dans 'bin'
 javac -d bin src/clientPackage/*.java src/serverPackage/*.java src/model/*.java
