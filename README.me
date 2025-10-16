@@ -1,46 +1,110 @@
-# TP2-DAR2025: Sockets TCP - Échange de Données Complexes
+Absolument. Voici une proposition de fichier README.md pour votre projet TP2, en reprenant la structure et le style que vous avez fournis. Il est adapté pour décrire les deux nouvelles activités que vous avez réalisées.
 
-Un projet client-serveur évolué pour le cours de LSI3, utilisant des chaînes de caractères et des objets sérialisables.
+☕ TP2-DAR2025: Sockets TCP - Échange de Données Complexes
 
-**Auteur :** Mouhamed Gharsallah  
-**Classe :** LSI3 - TP2
+Évolution du projet client-serveur avec gestion de chaînes de caractères et d'objets sérialisables pour le cours de LSI3.
 
----
+🧑‍💻 Auteur : Mouhamed Gharsallah
+🎓 Classe : LSI3 - TP2
 
-## Aperçu du Projet
+📝 Aperçu du Projet
 
-Ce projet universitaire, suite du TP1, s'inscrit dans le cadre du module d'Applications Réparties. L'objectif est de faire évoluer l'application client-serveur pour gérer des communications plus complexes que l'échange d'un simple octet, en explorant deux mécanismes fondamentaux de la communication réseau en Java.
+Ce projet est la suite du TP1 et s'inscrit dans le cadre du module d'Applications Réparties. L'objectif est de faire évoluer notre application client-serveur pour gérer des communications plus complexes que l'échange d'un simple octet.
 
-## Structure du Projet
+Le projet se concentre sur deux mécanismes de communication essentiels en Java :
 
-Le développement est organisé en deux branches distinctes, chacune correspondant à une activité spécifique du travail pratique. Chaque branche représente une étape d'évolution de l'application, introduisant une nouvelle méthode de communication.
+L'échange de chaînes de caractères (CC) pour envoyer des commandes complètes.
 
----
+L'échange d'objets sérialisables pour une communication structurée et orientée objet.
 
-### Activité 2.1: Échange de Chaînes de Caractères via Sockets TCP
+📂 Structure du Projet
 
-*(Branche: `Med-Gh-TN-Activite_2_1`)*
+Le projet est organisé autour de la nouvelle architecture de packages et de deux branches Git, chacune correspondant à une activité du TP2.
 
-> L'objectif est de permettre au client d'envoyer une opération mathématique complète (ex: "55 * 25") sous forme de chaîne de caractères. L'application est modifiée pour utiliser les flux de traitement de texte (`BufferedReader`/`PrintWriter`). Le serveur reçoit la chaîne, l'analyse, effectue le calcul et renvoie le résultat au client.
+Nouvelle structure de packages :
 
-### Activité 2.2: Échange d'Objets Sérialisables
+clientPackage: Contient la classe Client.
 
-*(Branche: `Med-Gh-TN-Activite_2_2`)*
+serverPackage: Contient la classe Server.
 
-> Pour une communication plus robuste et orientée objet, cette activité remplace l'échange de chaînes par l'échange d'objets. Une classe `Operation` implémentant l'interface `Serializable` est créée pour encapsuler les données. Le client envoie une instance de cet objet, le serveur la reçoit, la modifie en y ajoutant le résultat du calcul, et la renvoie au client.
+model: Contient la classe Operation (utilisée dans l'Activité 2.2).
 
----
+1️⃣ Activité 2.1: Échange de Chaînes de Caractères (CC) via Sockets TCP 💬
 
-## Comment Compiler et Exécuter
+(Branche: Med-Gh-TN-Activite_2_1)
 
-Pour lancer l'application, assurez-vous d'avoir le **JDK (Java Development Kit)** installé sur votre machine. Ce projet utilise des packages, les commandes sont donc spécifiques.
+L'objectif est de dépasser la limite de l'échange d'un seul octet. L'application est modifiée pour que le client puisse envoyer une opération mathématique complète (ex: "55 * 25") sous forme de chaîne de caractères. Le serveur reçoit cette chaîne, la traite, effectue le calcul et renvoie le résultat. Cette étape utilise les classes BufferedReader et PrintWriter pour la gestion des flux de texte.
 
-### Compilation du projet
-Ouvrez un terminal à la racine du projet et exécutez la commande suivante pour compiler tous les fichiers.
+2️⃣ Activité 2.2: Échange d'Objets Sérialisables 📦
 
-```bash
-# Crée un dossier 'bin' pour stocker les fichiers .class
-mkdir -p bin
+(Branche: Med-Gh-TN-Activite_2_2)
 
-# Compile tous les fichiers .java et place le résultat dans 'bin'
+Pour une communication plus propre et robuste, cette activité remplace l'échange de chaînes par l'échange d'objets.
+
+Une classe Operation est créée et implémente l'interface Serializable pour encapsuler les données de l'opération.
+
+Le client instancie cet objet, l'envoie au serveur en utilisant ObjectOutputStream.
+
+Le serveur le reçoit via ObjectInputStream, effectue le calcul, met à jour l'objet avec le résultat et le renvoie au client.
+
+🚀 Comment Compiler et Exécuter
+
+Assurez-vous d'avoir le JDK (Java Development Kit) installé. Le projet utilisant des packages, les commandes sont légèrement différentes du TP1.
+
+Supposons que vos fichiers .java sont dans un dossier src organisé par package.
+
+code
+Code
+download
+content_copy
+expand_less
+Projet_TP2/
+└── src/
+    ├── clientPackage/
+    │   └── Client.java
+    ├── serverPackage/
+    │   └── Server.java
+    └── model/
+        └── Operation.java
+Compilation (une seule fois pour tout le projet)
+
+Ouvrez un terminal à la racine (Projet_TP2/) et compilez tous les fichiers. L'option -d bin crée un dossier bin pour les fichiers .class compilés.
+
+code
+Bash
+download
+content_copy
+expand_less
+# Crée un dossier 'bin' s'il n'existe pas
+mkdir bin
+
+# Compile tous les .java du dossier src et place les .class dans bin
 javac -d bin src/clientPackage/*.java src/serverPackage/*.java src/model/*.java
+Exécution
+Côté Serveur 🖥️
+
+Ouvrez un terminal et exécutez la commande suivante depuis la racine du projet :
+
+code
+Bash
+download
+content_copy
+expand_less
+# Lance la classe Server en indiquant que les packages sont dans le dossier 'bin'
+java -cp bin serverPackage.Server
+
+Le serveur se mettra en attente d'une connexion.
+
+Côté Client 💻
+
+Ouvrez un nouveau terminal et exécutez cette commande depuis la racine du projet :
+
+code
+Bash
+download
+content_copy
+expand_less
+# Lance la classe Client
+java -cp bin clientPackage.Client
+
+Le client se connectera au serveur et vous pourrez commencer à envoyer des opérations.
