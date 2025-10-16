@@ -1,55 +1,45 @@
-# ☕ TP2-DAR2025 : Sockets TCP – Échange de Données Complexes
+# TP2-DAR2025: Sockets TCP - Échange de Données Complexes
 
-*Évolution du projet client-serveur avec gestion de chaînes de caractères et d'objets sérialisables pour le cours de LSI3.*
+Un projet client-serveur évolué pour le cours de LSI3, utilisant des chaînes de caractères et des objets sérialisables.
 
-**🧑‍💻 Auteur :** Mouhamed Gharsallah  
-**🎓 Classe :** LSI3 – TP2
-
----
-
-## 📝 Aperçu du Projet
-
-Ce projet universitaire, qui fait suite au **TP1**, s’inscrit dans le cadre du module **Applications Réparties**.  
-L’objectif principal est de faire évoluer l’application client-serveur pour gérer des communications plus complexes que l’échange d’un simple octet, en explorant deux mécanismes fondamentaux de la communication réseau en Java.
+**Auteur :** Mouhamed Gharsallah  
+**Classe :** LSI3 - TP2
 
 ---
 
-## 📂 Structure du Projet
+## Aperçu du Projet
 
-Le développement est organisé en **deux branches distinctes**, chacune correspondant à une activité spécifique du TP.  
-Chaque branche représente une étape d’évolution de l’application, introduisant une nouvelle méthode de communication.
+Ce projet universitaire, suite du TP1, s'inscrit dans le cadre du module d'Applications Réparties. L'objectif est de faire évoluer l'application client-serveur pour gérer des communications plus complexes que l'échange d'un simple octet, en explorant deux mécanismes fondamentaux de la communication réseau en Java.
 
----
+## Structure du Projet
 
-### 1️⃣ Activité 2.1 : Échange de Chaînes de Caractères via Sockets TCP 💬
-**Branche :** `Med-Gh-TN-Activite_2_1`
-
-> 🎯 **Objectif :**  
-> Permettre au client d’envoyer une opération mathématique complète (ex: `"55 * 25"`) sous forme de chaîne de caractères.  
-> L’application utilise les flux de traitement de texte (`BufferedReader` / `PrintWriter`).  
-> Le serveur reçoit la chaîne, l’analyse, effectue le calcul et renvoie le résultat au client.
+Le développement est organisé en deux branches distinctes, chacune correspondant à une activité spécifique du travail pratique. Chaque branche représente une étape d'évolution de l'application, introduisant une nouvelle méthode de communication.
 
 ---
 
-### 2️⃣ Activité 2.2 : Échange d’Objets Sérialisables 📦
-**Branche :** `Med-Gh-TN-Activite_2_2`
+### Activité 2.1: Échange de Chaînes de Caractères via Sockets TCP
 
-> 🎯 **Objectif :**  
-> Mettre en place une communication orientée objet à l’aide de la sérialisation.  
-> Une classe `Operation` implémente l’interface `Serializable` pour encapsuler les données.  
-> Le client envoie une instance de cet objet, le serveur la reçoit, ajoute le résultat du calcul, puis la renvoie au client.
+*(Branche: `Med-Gh-TN-Activite_2_1`)*
+
+> L'objectif est de permettre au client d'envoyer une opération mathématique complète (ex: "55 * 25") sous forme de chaîne de caractères. L'application est modifiée pour utiliser les flux de traitement de texte (`BufferedReader`/`PrintWriter`). Le serveur reçoit la chaîne, l'analyse, effectue le calcul et renvoie le résultat au client.
+
+### Activité 2.2: Échange d'Objets Sérialisables
+
+*(Branche: `Med-Gh-TN-Activite_2_2`)*
+
+> Pour une communication plus robuste et orientée objet, cette activité remplace l'échange de chaînes par l'échange d'objets. Une classe `Operation` implémentant l'interface `Serializable` est créée pour encapsuler les données. Le client envoie une instance de cet objet, le serveur la reçoit, la modifie en y ajoutant le résultat du calcul, et la renvoie au client.
 
 ---
 
-## 🚀 Compilation et Exécution
+## Comment Compiler et Exécuter
 
-Assurez-vous d’avoir installé le **JDK (Java Development Kit)** sur votre machine.  
-Ce projet utilise des **packages**, donc les commandes doivent être exécutées depuis la racine du projet.
+Pour lancer l'application, assurez-vous d'avoir le **JDK (Java Development Kit)** installé sur votre machine. Ce projet utilise des packages, les commandes sont donc spécifiques.
 
-### 🧱 Compilation du Projet
+### Compilation du projet
+Ouvrez un terminal à la racine du projet et exécutez la commande suivante pour compiler tous les fichiers.
 
 ```bash
-# Crée un dossier 'bin' pour stocker les fichiers compilés
+# Crée un dossier 'bin' pour stocker les fichiers .class
 mkdir -p bin
 
 # Compile tous les fichiers .java et place le résultat dans 'bin'
